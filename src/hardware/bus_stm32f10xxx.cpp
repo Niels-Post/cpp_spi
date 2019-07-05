@@ -8,6 +8,7 @@
 */
 
 #include <spi/hardware/bus_stm32f10xxx.hpp>
+#include <cout_debug.hpp>
 
 namespace spi {
     void bus_stm32f10xxx::write_read(size_t n, const uint8_t *data_out, uint8_t *data_in) {
@@ -18,13 +19,11 @@ namespace spi {
             DMA1_Channel2->CNDTR = n;
             DMA1_Channel2->CCR |= 1u;
         }
-
         if (data_out != nullptr) {
             DMA1_Channel3->CMAR = (uint32_t) data_out;
         } else {
             DMA1_Channel3->CMAR = (uint32_t) data_out_empty;
         }
-
 
         DMA1_Channel3->CNDTR = n;
         DMA1_Channel3->CCR |= 1u;
