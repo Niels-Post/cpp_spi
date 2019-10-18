@@ -56,7 +56,7 @@ void spi::bus_bitbang::write_read_reverse(size_t n, const uint8_t *data_out, uin
         }
 
     }
-//    wait_half_period();
+    wait_half_period();
 }
 
 
@@ -69,8 +69,8 @@ void spi::bus_bitbang::write_read_byte(uint8_t &d) {
         for (uint_fast8_t j = 0; j < 8; ++j) {
             sclk.write(!mode.clock_polarity);
             mosi.write((d & 0x80) != 0);
-//            wait_half_period();
-//            wait_half_period();
+            wait_half_period();
+            wait_half_period();
             sclk.write(mode.clock_polarity);
             d = d << 1;
             if (miso.read()) {
@@ -80,9 +80,9 @@ void spi::bus_bitbang::write_read_byte(uint8_t &d) {
     } else {
         for (uint_fast8_t j = 0; j < 8; ++j) {
             mosi.write((d & 0x80) != 0);
-//            wait_half_period();
+            wait_half_period();
             sclk.write(!mode.clock_polarity);
-//            wait_half_period();
+            wait_half_period();
             d = d << 1;
             if (miso.read()) {
                 d |= 0x01;

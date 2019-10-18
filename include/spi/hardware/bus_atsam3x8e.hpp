@@ -20,7 +20,7 @@ namespace spi {
      */
 
     /**
-     * \brief Hardware SPI implementation for the STM32 Bluepill
+     * \brief Hardware SPI implementation for the atsam3x8e (the processor for the arduino due)
      *
      * Uses hardware SPI1, and DMA, for extra fast transfer.
      * Unfortunately this bus doesn't support other modes than the default one.
