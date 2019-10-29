@@ -61,7 +61,7 @@ void spi::bus_bitbang::write_read_reverse(size_t n, const uint8_t *data_out, uin
 
 
 void spi::bus_bitbang::wait_half_period() {
-    hwlib::wait_ns(mode.half_time_ns);
+    hwlib::wait_ns_busy(mode.half_time_ns);
 }
 
 void spi::bus_bitbang::write_read_byte(uint8_t &d) {

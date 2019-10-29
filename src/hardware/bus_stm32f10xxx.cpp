@@ -8,7 +8,6 @@
 */
 
 #include <spi/hardware/bus_stm32f10xxx.hpp>
-#include <cout_debug.hpp>
 
 namespace spi {
     void bus_stm32f10xxx::write_read(size_t n, const uint8_t *data_out, uint8_t *data_in) {
